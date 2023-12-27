@@ -1,4 +1,4 @@
-# TSM Template ![build-status](https://github.com/chakhsu/tsm-template/actions/workflows/ci.yml/badge.svg) ![npm](https://img.shields.io/npm/v/tsm-template) ![license](https://img.shields.io/npm/l/tsm-template)
+# Cache Proxy Plus ![build-status](https://github.com/chakhsu/cache-proxy-plus/actions/workflows/ci.yml/badge.svg) ![npm](https://img.shields.io/npm/v/cache-proxy-plus) ![license](https://img.shields.io/npm/l/cache-proxy-plus)
 
 [English](./README.md) | [简体中文](./README_CN.md)
 

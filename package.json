@@ -1,6 +1,6 @@
 {
-  "name": "tsm-template",
-  "version": "v0.0.2",
+  "name": "cache-proxy-plus",
+  "version": "v0.0.1",
   "description": "A typescript module template",
   "author": "Chakhsu.Lau",
   "license": "MIT",
@@ -13,11 +13,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/chakhsu/tsm-template"
+    "url": "https://github.com/chakhsu/cache-proxy-plus"
   },
-  "homepage": "https://github.com/chakhsu/tsm-template",
+  "homepage": "https://github.com/chakhsu/cache-proxy-plus",
   "bugs": {
-    "url": "https://github.com/chakhsu/tsm-template/issues"
+    "url": "https://github.com/chakhsu/cache-proxy-plus/issues"
   },
   "exports": {
     ".": {
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.11",
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.10.5",
     "husky": "^8.0.3",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.0",
