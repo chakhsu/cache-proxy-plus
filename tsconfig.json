@@ -11,7 +11,10 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "outDir": "lib"
   },
   "include": ["src"],
   "exclude": ["test"]

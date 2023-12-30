@@ -1,5 +1,5 @@
 {
-  "arrowParens": "always",
+  "arrowParens": "avoid",
   "bracketSameLine": false,
   "bracketSpacing": true,
   "embeddedLanguageFormatting": "auto",
@@ -7,7 +7,7 @@
   "htmlWhitespaceSensitivity": "css",
   "insertPragma": false,
   "jsxSingleQuote": true,
-  "printWidth": 200,
+  "printWidth": 300,
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
   "requirePragma": false,

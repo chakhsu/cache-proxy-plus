@@ -1,5 +1,3 @@
-import { HelloString } from './string'
-
-export const hello = () => {
-  return HelloString
-}
+export * from './CacheProxy'
+export { OptionsType } from './Schema'
+export * from './RemoteCache'
