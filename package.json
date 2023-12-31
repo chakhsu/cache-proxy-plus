@@ -31,9 +31,8 @@
   ],
   "scripts": {
     "clear": "rimraf lib && rimraf coverage",
-    "patch:esm-type": "echo '{ \"type\": \"module\" }' >> lib/package.json",
     "patch:esm-js": "tsc-esm-fix --tsconfig=tsconfig.json",
-    "build:esm": "tsc -P tsconfig.json && pnpm patch:esm-js && pnpm patch:esm-type",
+    "build:esm": "tsc -P tsconfig.json && pnpm patch:esm-js",
     "build": "pnpm clear && pnpm build:esm",
     "lint:prettier": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "prettier": "pnpm lint:prettier --write",
