@@ -148,7 +148,7 @@ managerProxy.channel.on('error', err => {
 })
 ```
 
-### 监听过期 key
+#### 监听过期 key
 
 ```js
 managerProxy.channel.on('expired', (key, type) => {
