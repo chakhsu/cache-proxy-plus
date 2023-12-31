@@ -41,9 +41,22 @@ class Manager {
     this.concurrency -= 1
     return Math.random()
   }
+
+  async excludeJob(id: number) {
+    return Math.random()
+  }
 }
 
 describe('cacheProxy', () => {
+  test('Should proxy exclude method', async () => {
+    const manager = new Manager()
+    const cachedManager = cacheProxy(manager, { exclude: ['excludeJob'] })
+
+    const resultA = await cachedManager.doJob('test-manager')
+    const resultB = await cachedManager.doJob('test-manager')
+    expect(resultA !== resultB).toBeTruthy
+  })
+
   test('Should cached async function', async () => {
     const manager = new Manager()
     const cachedManager = cacheProxy(manager)

@@ -2,6 +2,7 @@ import Joi from 'joi'
 import { RemoteCache } from '../src/RemoteCache'
 
 export type OptionsType = {
+  exclude: string[]
   ttl: number
   checkPeriod: number
   statsInterval: number
@@ -24,6 +25,7 @@ export type CacheProxyOptionsType = Partial<OptionsType>
 
 const optionsSchema = Joi.object()
   .keys({
+    exclude: Joi.array().items(Joi.string()).default([]),
     ttl: Joi.number()
       .greater(0)
       .default(1000 * 60),

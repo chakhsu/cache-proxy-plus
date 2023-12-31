@@ -58,12 +58,10 @@ const manager = new Manager()
 const managerProxy = cacheProxyPlus(manager, { ttl: 2000, statsInterval: 1000 * 10 })
 managerProxy.channel.on('stats', s => console.info(s))
 
-let i = 0
 setInterval(async () => {
-  i++
-  const res1 = await managerProxy.doJob(i)
-  const res2 = await managerProxy.doJob(i)
-  const res3 = await managerProxy.doBase(i)
+  const res1 = await managerProxy.doJob(1)
+  const res2 = await managerProxy.doJob(2)
+  const res3 = await managerProxy.doBase(3)
 }, 1000)
 ```
 
@@ -81,6 +79,7 @@ cacheProxyPlus(target, options)
 
 `options`:
 
+- `exclude`: _(default: `[]`)_ Exclude methods that do not require caching proxies, string array
 - `ttl`: _(default: `1000 * 60`)_ Expiration time of the cache in milliseconds
 - `checkPeriod`: _(default: `1000`)_ Time interval to check cache expiration in milliseconds
 - `statsInterval`: _(default: `1000 * 60`)_ Interval for printing cache usage statistics in milliseconds

@@ -16,15 +16,15 @@ class Manager extends Base {
   }
 }
 
-const a = new Manager()
-const p = cacheProxyPlus(a, { ttl: 2000, statsInterval: 1000 * 10 })
-p.channel.on('stats', s => console.info(s))
+const manager = new Manager()
+const managerProxy = cacheProxyPlus(manager, { ttl: 2000, statsInterval: 1000 * 10, exclude: ['doBase'] })
+managerProxy.channel.on('stats', s => console.info(s))
 
 let i = 0
 setInterval(async () => {
   i++
-  const res1 = await p.doJob(1)
-  const res2 = await p.doJob(2)
-  const res3 = await p.doBase(3)
+  const res1 = await managerProxy.doJob(1)
+  const res2 = await managerProxy.doJob(2)
+  const res3 = await managerProxy.doBase(3)
   console.log(res1, res2, res3, i)
 }, 1000)

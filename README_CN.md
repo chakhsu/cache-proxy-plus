@@ -58,12 +58,10 @@ const manager = new Manager()
 const managerProxy = cacheProxyPlus(manager, { ttl: 2000, statsInterval: 1000 * 10 })
 managerProxy.channel.on('stats', s => console.info(s))
 
-let i = 0
 setInterval(async () => {
-  i++
-  const res1 = await managerProxy.doJob(i)
-  const res2 = await managerProxy.doJob(i)
-  const res3 = await managerProxy.doBase(i)
+  const res1 = await managerProxy.doJob(1)
+  const res2 = await managerProxy.doJob(2)
+  const res3 = await managerProxy.doBase(3)
 }, 1000)
 ```
 
@@ -81,6 +79,7 @@ cacheProxyPlus(target, options)
 
 `options`:
 
+- `exclude`: _(默认值: `[]`)_ 排除不需要缓存代理的 method，字符串数组
 - `ttl`: _(默认值: `1000 * 60`)_ 缓存的过期时间，单位 ms
 - `checkPeriod`: _(默认值: `1000`)_ 检查缓存过期的时间间隔，单位 ms
 - `statsInterval`: _(默认值: `1000 * 60`_\* 缓存使用统计打印间隔，单位 ms

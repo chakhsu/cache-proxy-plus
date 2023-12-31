@@ -24,6 +24,12 @@ export const cacheProxy = (target: any, options?: CacheProxyOptionsType) => {
     get: function (target: any, prop: string) {
       const property = target[prop]
 
+      if (newOptions.exclude.length > 0) {
+        if (newOptions.exclude.includes(prop)) {
+          return property
+        }
+      }
+
       if (prop === 'channel') {
         return channel
       } else if (typeof property === 'function' && prop !== 'constructor') {
