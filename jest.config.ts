@@ -3,7 +3,10 @@ import type { Config } from 'jest'
 const config: Config = {
   roots: ['test'],
   testPathIgnorePatterns: ['node_modules', 'lib'],
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
+  transform: {
+    '^.+\\.(ts|tsx)?$': ['ts-jest', { useESM: true }]
+  },
   testEnvironment: 'node',
   testTimeout: 15000,
   reporters: ['default', 'github-actions'],

@@ -19,6 +19,7 @@ class Manager extends Base {
 const a = new Manager()
 const p = cacheProxyPlus(a, { statsInterval: 1000 * 10 })
 p.channel.on('stats', s => console.info(s))
+
 let i = 0
 setInterval(async () => {
   i++

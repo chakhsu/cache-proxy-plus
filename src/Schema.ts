@@ -20,6 +20,8 @@ export type OptionsType = {
   remoteCache: RemoteCache | null
 }
 
+export type CacheProxyOptionsType = Partial<OptionsType>
+
 const optionsSchema = Joi.object()
   .keys({
     ttl: Joi.number()
@@ -63,7 +65,7 @@ const optionsSchema = Joi.object()
   })
   .optional()
 
-export const attemptOptionsSchema = (options?: OptionsType): OptionsType => {
+export const attemptOptionsSchema = (options?: OptionsType | CacheProxyOptionsType): OptionsType => {
   return Joi.attempt(options || {}, optionsSchema)
 }
 

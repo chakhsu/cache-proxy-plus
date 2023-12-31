@@ -1,11 +1,11 @@
 import util from 'util'
 import { CacheLayer } from './CacheLayer'
-import { assertTargetSchema, attemptOptionsSchema, OptionsType } from './Schema'
+import { assertTargetSchema, attemptOptionsSchema, CacheProxyOptionsType } from './Schema'
 
 import Debug from 'debug'
 const debug = Debug('cpp:CacheProxy')
 
-export const cacheProxy = (target: any, options?: OptionsType) => {
+export const cacheProxy = (target: any, options?: CacheProxyOptionsType) => {
   assertTargetSchema(target)
   const newOptions = attemptOptionsSchema(options)
   debug('cacheProxy arg options: ', options, newOptions)

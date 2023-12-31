@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
     "rootDir": "src",
-    "types": ["node", "jest"],
+    "outDir": "lib",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "types": ["node", "jest", "@types/jest"],
     "moduleResolution": "node",
     "removeComments": true,
     "declarationDir": "lib/types",
@@ -11,11 +14,11 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
-    "module": "ESNext",
-    "target": "ESNext",
-    "outDir": "lib"
+    "declarationMap": true
   },
-  "include": ["src"],
-  "exclude": ["test"]
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": ["./src/**/*"]
 }
