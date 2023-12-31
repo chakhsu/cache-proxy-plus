@@ -11,8 +11,8 @@ permissions:
 
 jobs:
   test:
-    name: Test on Node.js ${{ matrix.node-version }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    name: Test on Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -20,10 +20,6 @@ jobs:
             20.x,
             18.x,
             16.x
-          ]
-        os: [
-            ubuntu-latest,
-            macos-latest
           ]
     services:
       redis:
