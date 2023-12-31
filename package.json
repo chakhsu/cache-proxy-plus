@@ -1,15 +1,21 @@
 {
   "name": "cache-proxy-plus",
-  "version": "v1.1.0",
+  "version": "v1.1.1",
   "description": "A method proxy library that makes it easy to implement local and remote cache with built-in usage statistics.",
   "author": "Chakhsu.Lau",
   "license": "MIT",
   "keywords": [
-    "npm",
-    "github",
-    "module",
+    "cache",
+    "proxy",
+    "plus",
     "typescript",
-    "template"
+    "esm",
+    "localCache",
+    "remoteCache",
+    "redis",
+    "statistics",
+    "event",
+    "stats"
   ],
   "repository": {
     "type": "git",
