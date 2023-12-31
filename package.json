@@ -1,7 +1,7 @@
 {
   "name": "cache-proxy-plus",
-  "version": "v1.0.0",
-  "description": "A typescript module template",
+  "version": "v1.1.0",
+  "description": "A method proxy library that makes it easy to implement local and remote cache with built-in usage statistics.",
   "author": "Chakhsu.Lau",
   "license": "MIT",
   "keywords": [
@@ -23,10 +23,11 @@
   "exports": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
   "engines": {
-    "node": ">=14.16"
+    "node": ">=16"
   },
   "files": [
     "lib",
+    "doc",
     "README_CN.md"
   ],
   "scripts": {

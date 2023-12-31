@@ -70,6 +70,7 @@ export class CacheLayer extends EventEmitter {
       debug('>>>> BEGIN:\t', key)
 
       // 第一步，检测本地缓存
+      // 1: check local cache
       if (localCache.has(key)) {
         const wrapped = localCache.get(key)
         this.stats.mark(method, 'local')
@@ -78,12 +79,10 @@ export class CacheLayer extends EventEmitter {
       }
 
       // 第二步，检测远程缓存
+      // 2: check remote cache
       if (remoteCache) {
         const wrapped: any = await remoteCache.get(key)
         if (wrapped) {
-          // 讨论 是否更新 local cache ?
-          // 方案 1： 更新。如果不更新local cache，会有请求一直打到remote cache，直到remote cache过期
-          // 方案 2： 不更新。如果更新了local cache，会不会导致cache不会过期？ 感觉不会，因为remote cache总会过期的
           this.setCache(method, key, wrapped.value, { localOnly: true })
 
           this.stats.mark(method, 'remote')
@@ -93,6 +92,7 @@ export class CacheLayer extends EventEmitter {
       }
 
       // 第三步，检测优先后备缓存
+      // 3: check first fallback cache
       if (this.options.fallbackFirst && localCache.hasInFallback(key)) {
         const { isCached, value } = localCache.getFromFallback(key)
         if (isCached) {
@@ -107,6 +107,7 @@ export class CacheLayer extends EventEmitter {
       }
 
       // 第四步，检测并发控制
+      // 4: check concurrency control
       const waitInConcurrent = this.checkConcurrent(key)
       if (waitInConcurrent) {
         try {
@@ -127,6 +128,7 @@ export class CacheLayer extends EventEmitter {
 
       try {
         // 第五步，缓存没命中，发起真正的请求
+        // 5: cache no hit, try real call
         this.stats.mark(method, 'miss')
         const value = await this.updateForeground(target, method, args, key)
         this.setCache(method, key, value, { localOnly: false })
@@ -136,6 +138,7 @@ export class CacheLayer extends EventEmitter {
         return value
       } catch (err: any) {
         // 第六步，当错误发生，检测后备缓存
+        // 6: emit error, check fallback cache
         if (this.options.fallback && localCache.hasInFallback(key)) {
           const wrapped = localCache.getFromFallback(key)
           if (wrapped) {
