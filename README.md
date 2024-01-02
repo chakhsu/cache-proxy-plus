@@ -9,13 +9,12 @@ A Node.js library for executing proxy methods with ease, combining local and rem
 ## Features
 
 1. Supports ES Module only, not compatible with commonjs
-2. Written in TypeScript, tested with Jest
-3. Method proxy supports AsyncFunction only
-4. Avoids cache breakdown; when the cache expires, it won't concurrently send requests to the backend service
-5. Supports background polling updates to ensure the cache is always valid and up-to-date
-6. Supports fallback cache, even if the remote service crashes and the cache has expired, it can still retrieve cached content
-7. Supports remote cache, such as Redis
-8. Supports caching usage statistics
+2. Method proxy supports AsyncFunction only
+3. Avoids cache breakdown; when the cache expires, it won't concurrently send requests to the backend service
+4. Supports background polling updates to ensure the cache is always valid and up-to-date
+5. Supports fallback cache, even if the remote service crashes and the cache has expired, it can still retrieve cached content
+6. Supports remote cache, such as Redis
+7. Supports caching usage statistics
 
 ## Cache Priority
 
