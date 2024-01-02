@@ -1,3 +1,3 @@
 export * from './CacheProxy'
-export { CacheProxyOptionsType } from './Schema'
+export type { CacheProxyOptionsType } from './Schema'
 export * from './RemoteCache'
