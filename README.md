@@ -130,6 +130,18 @@ class RedisCache extends RemoteCache {
 }
 ```
 
+### Clear Cache
+
+There are two scenarios: one is to clear all local caches, and the other is to clear the local cache for a specific method in the proxy.
+
+```js
+// clear all local caches
+managerProxy.channel.clear()
+
+// clear local cache for a specific method
+managerProxy.channel.clear(methodName)
+```
+
 ### Event
 
 ```
@@ -188,6 +200,12 @@ Details for each statistic:
   fallbackFirst: 0, // Number of hits prioritizing fallback cache
   fallbackExpired: 0, // Number of fallback cache expirations
 }
+```
+
+Another way to obtain statistics:
+
+```js
+const stats = managerProxy.channel.stats()
 ```
 
 ### Background

@@ -15,9 +15,10 @@ export const cacheProxy = (target: any, options?: CacheProxyOptionsType) => {
     subject: newOptions.subject || Object.getPrototypeOf(target).constructor.name
   })
 
-  const channel = {
+  const channel: { stats: Function; on: Function; clear: Function } = {
     stats: () => cached.getStats(),
-    on: (...args: [string, any]) => cached.on(...args)
+    on: (...args: [string, any]) => cached.on(...args),
+    clear: () => cached.clear()
   }
 
   const handler = {

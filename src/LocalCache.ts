@@ -101,6 +101,28 @@ export class LocalCache extends EventEmitter {
     }
   }
 
+  clear(key?: string) {
+    this._mainCache.clear()
+    this._needBgUpdateMap.clear()
+    if (this._fallbackCache) {
+      this._fallbackCache.clear()
+    }
+  }
+
+  fuzzyDelete(key: string) {
+    const deleteKeys: string[] = []
+
+    this._needBgUpdateMap.forEach((_, fullKey: string) => {
+      if (fullKey.includes(key)) {
+        deleteKeys.push(fullKey)
+      }
+    })
+
+    deleteKeys.forEach(k => {
+      this._needBgUpdateMap.delete(k)
+    })
+  }
+
   private _resetBgUpdateTimer(delay = 0) {
     clearTimeout(this._needBgUpdateTimer)
     this._needBgUpdateTimer = setTimeout(() => this._updateBackground(), delay)

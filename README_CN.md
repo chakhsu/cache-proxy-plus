@@ -130,6 +130,17 @@ class RedisCache extends RemoteCache {
 }
 ```
 
+### 清空缓存
+
+有两种情况，一种是清空所有本地缓存，另外一种是清空代理中的某个方法的本地缓存。
+
+```js
+// 清空所有本地缓存
+managerProxy.channel.clear()
+// 清空某个方法本地缓存
+managerProxy.channel.clear(methodName)
+```
+
 ### 事件监听
 
 ```
@@ -188,6 +199,12 @@ managerProxy.channel.on('stats', stats => {
   fallbackFirst: 0, // 优先后备缓存命中次数
   fallbackExpired: 0, // 后备缓存过期数量
 }
+```
+
+另外一种获取统计的方式：
+
+```js
+const stats = managerProxy.channel.stats()
 ```
 
 ### 后台轮询

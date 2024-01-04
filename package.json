@@ -1,6 +1,6 @@
 {
   "name": "cache-proxy-plus",
-  "version": "v1.2.1",
+  "version": "v1.3.0",
   "description": "A method proxy library that makes it easy to implement local and remote cache with built-in usage statistics.",
   "author": "Chakhsu.Lau",
   "license": "MIT",

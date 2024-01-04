@@ -16,7 +16,7 @@ const debug = Debug('cpp:CacheLayer')
 export class CacheLayer extends EventEmitter {
   private options: OptionsType
   private concurrentControl = new Map()
-  private remoteCache?
+  private remoteCache?: RemoteCache
   private localCache: LocalCache
   private pQueue: PQueue
   private stats: SimpleStats
@@ -163,7 +163,16 @@ export class CacheLayer extends EventEmitter {
   }
 
   getStats() {
-    return this.stats.getStats()
+    return this.stats.get()
+  }
+
+  clear(method?: string) {
+    if (method) {
+      const fuzzyKey = `${this.options.subject}:${method}`
+      this.localCache.fuzzyDelete(fuzzyKey)
+    } else {
+      this.localCache.clear()
+    }
   }
 
   async updateBackground(target: any, method: string, args: any[], key: string) {

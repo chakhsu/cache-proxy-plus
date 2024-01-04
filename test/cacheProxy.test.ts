@@ -76,6 +76,29 @@ describe('cacheProxy', () => {
     expect(stats.total.local === 2).toBeTruthy
   })
 
+  test('Should clear all local cache', async () => {
+    const manager = new Manager()
+    const cachedManager = cacheProxy(manager)
+
+    const resultA = await cachedManager.doJob('test-manager')
+    cachedManager.channel.clear()
+    const resultB = await cachedManager.doJob('test-manager')
+    expect(resultB !== resultA).toBeTruthy
+  })
+
+  test('Should clear method local cache', async () => {
+    const manager = new Manager()
+    const cachedManager = cacheProxy(manager)
+
+    const resultA = await cachedManager.doJob('test-manager')
+    const resultB = await cachedManager.doAnotherJob('test-manager')
+    cachedManager.channel.clear('doAnotherJob')
+    const resultC = await cachedManager.doJob('test-manager')
+    const resultD = await cachedManager.doAnotherJob('test-manager')
+    expect(resultA === resultC).toBeTruthy
+    expect(resultB !== resultD).toBeTruthy
+  })
+
   test('Should cached with different ttls for different methods', async () => {
     const manager = new Manager()
     const cachedManager = cacheProxy(manager, {

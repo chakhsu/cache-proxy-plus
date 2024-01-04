@@ -14,8 +14,8 @@ export class SimpleStats extends EventEmitter {
     this._methodStats = {}
 
     setInterval(() => {
-      const { current, total, methods } = this.getStats()
-      this.resetStats()
+      const { current, total, methods } = this.get()
+      this.reset()
 
       this.emit('stats', { current, total, methods })
     }, statsInterval).unref()
@@ -39,7 +39,7 @@ export class SimpleStats extends EventEmitter {
     }
   }
 
-  resetStats() {
+  reset() {
     // total stats 不会被重置
     this._currentStats = this._buildEmptyStats()
 
@@ -56,7 +56,7 @@ export class SimpleStats extends EventEmitter {
     this._methodStats[method][type] += 1
   }
 
-  getStats() {
+  get() {
     return {
       total: Object.assign({}, this._totalStats),
       current: Object.assign({}, this._currentStats),
